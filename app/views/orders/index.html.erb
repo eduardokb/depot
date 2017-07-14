@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1>Ordenes</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
       <th>Email</th>
-      <th>Pay type</th>
+      <th>Tipo de pago</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'Nueva Orden', new_order_path %>
+<p><%= paginate @orders %></p>

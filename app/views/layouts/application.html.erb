@@ -13,7 +13,8 @@
         <%= submit_tag 'submit' %>
         <%= javascript_tag "$('.locale input').hide()" %>
       <% end %>
-      <%= image_tag 'logo.svg', alt: 'The Progamatic Bookshelf' %>
+      <%= image_tag 'logo.png', :size => "180x90",alt: 'N' %>
+      <h1>KB</h1>
       <span class="title"><%= @page_title %></span>
     </div>
     <div id="columns">
@@ -27,21 +28,24 @@
         </div>
 
         <ul>
-          <li><a href="http://www...."><%= t('.home') %></a></li>
+          <li><a href="http://www...."><%= link_to 'Home', store_index_path %></a></li>
           <li><a href="http://www..../faq"><%= t('.questions') %></a></li>
           <li><a href="http://www..../news"><%= t('.news') %></a></li>
           <li><a href='http://www..../contact'><%= t('.contact') %></a></li>
+          <li><%= link_to 'Login', login_path, method: :get %></li>
+          <% if session[:user_id] %>
+
+              <li><%= link_to 'Ordenes', orders_path %></li>
+              <li><%= link_to 'Productos', products_path %></li>
+              <li><%= link_to 'Usuarios', users_path %></li>
+              <%= button_to 'Logout', logout_path, method: :delete %>
+
+
+          <% end %>
         </ul>
       </div>
 
-      <% if session[:user_id] %>
-        <ul>
-          <li><%= link_to 'Orders', orders_path %></li>
-          <li><%= link_to 'Products', products_path %></li>
-          <li><%= link_to 'Users', users_path %></li>
-        </ul>
-        <%= button_to 'Logout', logout_path, method: :delete %>
-      <% end %>
+
 
       <div id="main">
         <%= yield %>
